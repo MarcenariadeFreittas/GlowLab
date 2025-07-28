@@ -1577,69 +1577,92 @@
         </div>
     </section>
     
-        <!-- Contact Form Section -->
+    <!-- Contact Form Section -->
     <section class="contact-form" id="contact">
-        <h2>Entre em Contato Conosco</h2>
-        <p class="contact-form-subtitle">Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas para iniciar sua transformação</p>
-        
-        <div class="form-container">
-            <form id="contactForm">
-                <div class="form-group">
-                    <label for="name">Nome Completo *</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">E-mail *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Telefone/WhatsApp *</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="age">Idade</label>
-                    <select id="age" name="age">
-                        <option value="">Selecione sua faixa etária</option>
-                        <option value="18-25">18-25 anos</option>
-                        <option value="26-35">26-35 anos</option>
-                        <option value="36-45">36-45 anos</option>
-                        <option value="46-55">46-55 anos</option>
-                        <option value="56+">56+ anos</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="interest">Principal Interesse</label>
-                    <select id="interest" name="interest">
-                        <option value="">Selecione seu objetivo</option>
-                        <option value="simetria">Melhorar simetria facial</option>
-                        <option value="maxilar">Definir maxilar</option>
-                        <option value="rejuvenescimento">Rejuvenescimento</option>
-                        <option value="skincare">Cuidados com a pele</option>
-                        <option value="completo">Transformação completa</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Como podemos ajudar você? (Opcional)</label>
-                    <textarea id="message" name="message" placeholder="Conte-nos sobre suas expectativas e objetivos..."></textarea>
-                </div>
-                
-                <button type="submit" class="form-submit" id="submitBtn">
-                    Solicitar Consulta Gratuita
-                </button>
-                
-                <div class="form-success" id="formSuccess">
-                    ✅ Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.
-                </div>
-                
-                <div class="form-error" id="formError">
-                    ❌ Erro ao enviar mensagem. Tente novamente ou entre em contato por telefone.
-                </div>
-            </form>
+        <div class="contact-form-content">
+            <h2>Entre em Contato Conosco</h2>
+            <p class="contact-form-subtitle">Preencha o formulário abaixo e nossa equipe especializada entrará em contato em até 24 horas para iniciar sua jornada de transformação pessoal.</p>
+            
+            <div class="form-container">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">
+                            <i class="fas fa-user"></i>
+                            Nome Completo *
+                        </label>
+                        <input type="text" id="name" name="name" required placeholder="Digite seu nome completo">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            E-mail *
+                        </label>
+                        <input type="email" id="email" name="email" required placeholder="Digite seu melhor e-mail">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">
+                            <i class="fas fa-phone"></i>
+                            Telefone/WhatsApp *
+                        </label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(11) 99999-9999">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">
+                            <i class="fas fa-calendar-alt"></i>
+                            Idade
+                        </label>
+                        <select id="age" name="age">
+                            <option value="">Selecione sua faixa etária</option>
+                            <option value="18-25">18-25 anos</option>
+                            <option value="26-35">26-35 anos</option>
+                            <option value="36-45">36-45 anos</option>
+                            <option value="46-55">46-55 anos</option>
+                            <option value="56+">56+ anos</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interest">
+                            <i class="fas fa-target"></i>
+                            Principal Interesse
+                        </label>
+                        <select id="interest" name="interest">
+                            <option value="">Selecione seu objetivo</option>
+                            <option value="simetria">Melhorar simetria facial</option>
+                            <option value="maxilar">Definir maxilar</option>
+                            <option value="rejuvenescimento">Rejuvenescimento</option>
+                            <option value="skincare">Cuidados com a pele</option>
+                            <option value="completo">Transformação completa</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">
+                            <i class="fas fa-comment"></i>
+                            Como podemos ajudar você? (Opcional)
+                        </label>
+                        <textarea id="message" name="message" placeholder="Conte-nos sobre suas expectativas e objetivos..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i>
+                        Solicitar Consulta Gratuita
+                    </button>
+                    
+                    <div class="form-success" id="formSuccess">
+                        <i class="fas fa-check-circle"></i>
+                        Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.
+                    </div>
+                    
+                    <div class="form-error" id="formError">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Erro ao enviar mensagem. Tente novamente ou entre em contato por telefone.
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 
