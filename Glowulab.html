@@ -1056,46 +1056,115 @@
 
         /* Final CTA Section */
         .final-cta {
-            padding: 6rem 2rem;
+            padding: 8rem 2rem;
             background: var(--dark-card);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.03) 0%, transparent 70%),
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.02) 0%, transparent 50%);
+            animation: finalCtaBg 8s ease-in-out infinite;
+        }
+
+        @keyframes finalCtaBg {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        .final-cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .final-cta h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1rem;
-            font-weight: 700;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--text-white), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .final-cta-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-gray);
-            max-width: 800px;
-            margin: 0 auto 3rem;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            line-height: 1.7;
         }
 
         .offer-banner {
-            background: var(--primary-red);
+            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            font-size: 1.5rem;
+            padding: 2rem 3rem;
+            border-radius: 20px;
+            font-size: 1.6rem;
             font-weight: bold;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             display: inline-block;
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+            animation: offerPulse 2s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: offerShine 3s ease-in-out infinite;
+        }
+
+        @keyframes offerPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        @keyframes offerShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         .final-cta-button {
-            font-size: 1.3rem;
-            padding: 1.5rem 3rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            padding: 2rem 4rem;
+            margin-bottom: 3rem;
+            border-radius: 20px;
         }
 
-.guarantee-text {
-    color: var(--text-gray);
-    font-size: 1rem;
-    text-align: left;
-}
+        .guarantee-text {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .guarantee-text i {
+            color: var(--success-green);
+            margin-right: 0.5rem;
+        }
 
         /* Footer */
         .footer {
