@@ -804,56 +804,110 @@
 
         /* Contact Form Section */
         .contact-form {
-            padding: 6rem 2rem;
+            padding: 8rem 2rem;
             background: var(--gradient-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 60% 40%, rgba(255, 0, 0, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(0, 255, 136, 0.02) 0%, transparent 50%);
+            animation: contactBg 12s ease-in-out infinite;
+        }
+
+        @keyframes contactBg {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .contact-form-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .contact-form h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             text-align: center;
             margin-bottom: 1rem;
-            font-weight: 700;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--text-white), var(--success-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .contact-form-subtitle {
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-gray);
-            max-width: 600px;
-            margin: 0 auto 4rem;
+            margin: 0 auto 5rem;
+            line-height: 1.7;
         }
 
         .form-container {
-            max-width: 600px;
-            margin: 0 auto;
             background: var(--dark-card);
-            padding: 3rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 4rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--success-green), var(--primary-red), var(--success-green));
+            animation: formBorder 2s ease-in-out infinite;
+        }
+
+        @keyframes formBorder {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-weight: 600;
             color: var(--text-white);
+            font-size: 1.1rem;
+        }
+
+        .form-group label i {
+            color: var(--primary-red);
+            margin-right: 0.5rem;
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 1rem;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            padding: 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
             background: var(--dark-bg);
             color: var(--text-white);
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
         }
 
         .form-group input:focus,
@@ -861,32 +915,34 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--primary-red);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 150px;
         }
 
         .form-submit {
             width: 100%;
-            padding: 1.2rem;
-            background: var(--primary-red);
+            padding: 1.8rem;
+            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
             color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
+            border-radius: 15px;
+            font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.3);
         }
 
         .form-submit:hover {
-            background: #cc0000;
+            background: linear-gradient(135deg, #cc0000, var(--primary-red));
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 12px 35px rgba(255, 0, 0, 0.4);
         }
 
         .form-submit:disabled {
@@ -896,23 +952,25 @@
         }
 
         .form-success {
-            background: rgba(34, 197, 94, 0.1);
-            color: #22c55e;
-            padding: 1rem;
-            border-radius: 10px;
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--success-green);
+            padding: 1.5rem;
+            border-radius: 15px;
             text-align: center;
             display: none;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(0, 255, 136, 0.2);
         }
 
         .form-error {
-            background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
-            padding: 1rem;
-            border-radius: 10px;
+            background: rgba(255, 68, 68, 0.1);
+            color: var(--error-red);
+            padding: 1.5rem;
+            border-radius: 15px;
             text-align: center;
             display: none;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255, 68, 68, 0.2);
         }
 
         /* Testimonials Section */
