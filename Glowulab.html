@@ -999,57 +999,82 @@
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    
+    <!-- Floating particles -->
+    <div class="particle" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="top: 60%; left: 20%; animation-delay: 1s;"></div>
+    <div class="particle" style="top: 40%; left: 80%; animation-delay: 2s;"></div>
+    <div class="particle" style="top: 80%; left: 70%; animation-delay: 3s;"></div>
+    <div class="particle" style="top: 30%; left: 90%; animation-delay: 4s;"></div>
+
     <!-- Header -->
-    <header class="header">
-        <div class="logo">
-            <div class="logo-circle">GL</div>
-            <div class="logo-text">GLOW LAB</div>
+    <header class="header" id="header">
+        <div class="logo" onclick="scrollToTop()">
+            <div class="logo-icon">
+                <i class="fas fa-gem"></i>
+            </div>
+            <div>
+                <div class="logo-text">GLOW LAB</div>
+                <div class="logo-subtext">Ciência & Beleza</div>
+            </div>
         </div>
-        <a href="#quiz" class="cta-button">INICIAR AVALIAÇÃO</a>
+        <a href="#quiz" class="cta-button">
+            <i class="fas fa-play"></i>
+            INICIAR AVALIAÇÃO
+        </a>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Transforme Sua Vida Com <span class="highlight">Ciência</span></h1>
-        <p>Método científico revolucionário para transformação facial completa, pele radiante e simetria perfeita em apenas 90 dias</p>
-        <a href="#method" class="cta-button hero-cta">COMEÇAR TRANSFORMAÇÃO</a>
-        
-        <div class="stats">
-            <div class="stat-item">
-                <span class="stat-number">+15.000</span>
-                <div class="stat-label">Vidas Transformadas</div>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">99%</span>
-                <div class="stat-label">Taxa de Sucesso</div>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">90 Dias</span>
-                <div class="stat-label">Para Resultados</div>
+        <div class="hero-content">
+            <h1>Transforme Sua Vida Com <span class="highlight">Ciência</span></h1>
+            <p>Descubra o método revolucionário que já transformou mais de 15.000 vidas. Simetria perfeita, pele radiante e maxilar definido - tudo baseado em ciência comprovada.</p>
+            <a href="#method" class="cta-button hero-cta">
+                <i class="fas fa-rocket"></i>
+                COMEÇAR TRANSFORMAÇÃO
+            </a>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">+15.000</span>
+                    <div class="stat-label">Vidas Transformadas</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">99%</span>
+                    <div class="stat-label">Taxa de Sucesso</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">90 Dias</span>
+                    <div class="stat-label">Para Resultados</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Method Section -->
     <section id="method" class="method">
-        <h2>O Método Glow Lab</h2>
-        <p class="method-subtitle">Três etapas cientificamente desenvolvidas e comprovadas para sua transformação facial completa</p>
-        
-        <div class="method-steps">
-            <div class="method-step fade-in">
-                <div class="step-number">1</div>
-                <h3>ANÁLISE PROFUNDA</h3>
-                <p>Análise facial completa com tecnologia avançada, avaliação detalhada da simetria e identificação precisa de todos os pontos de melhoria na estrutura facial</p>
-            </div>
-            <div class="method-step fade-in">
-                <div class="step-number">2</div>
-                <h3>ESTRATÉGIA PERSONALIZADA</h3>
-                <p>Protocolo 100% personalizado com exercícios faciais específicos, rotina avançada de skincare e técnicas exclusivas de definição do maxilar</p>
-            </div>
-            <div class="method-step fade-in">
-                <div class="step-number">3</div>
-                <h3>EXECUÇÃO GUIADA</h3>
-                <p>Rotina diária otimizada de cuidados faciais, exercícios de tonificação progressivos e acompanhamento detalhado dos resultados visuais</p>
+        <div class="method-content">
+            <h2>O Método Glow Lab</h2>
+            <p class="method-subtitle">Três etapas cientificamente desenvolvidas e comprovadas para sua transformação facial completa. Cada passo é baseado em anos de pesquisa e milhares de casos de sucesso.</p>
+            
+            <div class="method-steps">
+                <div class="method-step fade-in">
+                    <div class="step-number">1</div>
+                    <h3>ANÁLISE PROFUNDA</h3>
+                    <p>Análise facial completa com tecnologia avançada, avaliação detalhada da simetria e identificação precisa de todos os pontos de melhoria na estrutura facial. Nosso sistema identifica até as menores imperfeições.</p>
+                </div>
+                <div class="method-step fade-in">
+                    <div class="step-number">2</div>
+                    <h3>ESTRATÉGIA PERSONALIZADA</h3>
+                    <p>Protocolo 100% personalizado com exercícios faciais específicos, rotina avançada de skincare e técnicas exclusivas de definição do maxilar. Cada pessoa recebe um plano único e otimizado.</p>
+                </div>
+                <div class="method-step fade-in">
+                    <div class="step-number">3</div>
+                    <h3>EXECUÇÃO GUIADA</h3>
+                    <p>Acompanhamento passo a passo com rotina diária otimizada, exercícios progressivos e monitoramento contínuo dos resultados. Nossa equipe te guia até o resultado final.</p>
+                </div>
             </div>
         </div>
     </section>
