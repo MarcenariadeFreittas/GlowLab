@@ -1993,6 +1993,16 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -2007,7 +2017,15 @@
             });
         });
 
-        // Intersection Observer for animations
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Enhanced intersection observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -2017,61 +2035,70 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    // Add staggered animation for grids
+                    if (entry.target.classList.contains('method-step') || 
+                        entry.target.classList.contains('testimonial')) {
+                        const siblings = entry.target.parentElement.children;
+                        const index = Array.from(siblings).indexOf(entry.target);
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100);
+                    }
                 }
             });
         }, observerOptions);
 
-        // Observe all elements with fade-in and scale-in classes
-        document.querySelectorAll('.fade-in, .scale-in').forEach(el => {
+        // Observe all elements with animation classes
+        document.querySelectorAll('.fade-in, .scale-in, .slide-in-left, .slide-in-right').forEach(el => {
             observer.observe(el);
         });
 
-        // Quiz functionality
+        // Enhanced quiz functionality with better questions
         let currentQuestion = 1;
         const totalQuestions = 5;
         const questions = [
             "Como você avalia a simetria atual do seu rosto?",
             "Qual é a sua principal preocupação com sua aparência facial?",
-            "Com que frequência você pratica exercícios faciais?",
+            "Com que frequência você pratica exercícios faciais atualmente?",
             "Qual é seu principal objetivo com a transformação facial?",
             "Quanto tempo por dia você pode dedicar aos cuidados faciais?"
         ];
 
         const questionOptions = [
             [
-                "Muito assimétrico - noto diferenças grandes entre os lados",
-                "Assimétrico - algumas diferenças visíveis",
-                "Razoavelmente simétrico - pequenas imperfeições",
-                "Bem simétrico - poucas imperfeições notáveis",
-                "Perfeitamente simétrico - sem imperfeições visíveis"
+                { text: "Muito assimétrico - noto diferenças grandes entre os lados", icon: "fas fa-chart-line" },
+                { text: "Assimétrico - algumas diferenças visíveis", icon: "fas fa-balance-scale" },
+                { text: "Razoavelmente simétrico - pequenas imperfeições", icon: "fas fa-adjust" },
+                { text: "Bem simétrico - poucas imperfeições notáveis", icon: "fas fa-check-circle" },
+                { text: "Perfeitamente simétrico - sem imperfeições visíveis", icon: "fas fa-star" }
             ],
             [
-                "Flacidez e perda de definição",
-                "Rugas e linhas de expressão",
-                "Assimetria facial",
-                "Falta de definição no maxilar",
-                "Pele sem brilho e vitalidade"
+                { text: "Flacidez e perda de definição", icon: "fas fa-arrow-down" },
+                { text: "Rugas e linhas de expressão", icon: "fas fa-lines-leaning" },
+                { text: "Assimetria facial", icon: "fas fa-balance-scale" },
+                { text: "Falta de definição no maxilar", icon: "fas fa-square" },
+                { text: "Pele sem brilho e vitalidade", icon: "fas fa-sun" }
             ],
             [
-                "Nunca pratiquei",
-                "Raramente, apenas quando lembro",
-                "Algumas vezes por semana",
-                "Diariamente, mas sem método específico",
-                "Diariamente com método estruturado"
+                { text: "Nunca pratiquei exercícios faciais", icon: "fas fa-times" },
+                { text: "Raramente, apenas quando lembro", icon: "fas fa-clock" },
+                { text: "Algumas vezes por semana", icon: "fas fa-calendar-week" },
+                { text: "Diariamente, mas sem método específico", icon: "fas fa-calendar-day" },
+                { text: "Diariamente com método estruturado", icon: "fas fa-calendar-check" }
             ],
             [
-                "Melhorar a simetria facial",
-                "Definir mais o maxilar",
-                "Rejuvenescer a aparência",
-                "Aumentar a autoestima",
-                "Ter uma transformação completa"
+                { text: "Melhorar a simetria facial", icon: "fas fa-balance-scale" },
+                { text: "Definir mais o maxilar", icon: "fas fa-square" },
+                { text: "Rejuvenescer a aparência", icon: "fas fa-leaf" },
+                { text: "Aumentar a autoestima", icon: "fas fa-heart" },
+                { text: "Ter uma transformação completa", icon: "fas fa-magic" }
             ],
             [
-                "5-10 minutos",
-                "10-20 minutos",
-                "20-30 minutos",
-                "30-45 minutos",
-                "Mais de 45 minutos"
+                { text: "5-10 minutos por dia", icon: "fas fa-clock" },
+                { text: "10-20 minutos por dia", icon: "fas fa-clock" },
+                { text: "20-30 minutos por dia", icon: "fas fa-clock" },
+                { text: "30-45 minutos por dia", icon: "fas fa-clock" },
+                { text: "Mais de 45 minutos por dia", icon: "fas fa-clock" }
             ]
         ];
 
@@ -2099,26 +2126,46 @@
                 return;
             }
 
-            // Update question
-            document.querySelector('.quiz-question').textContent = questions[currentQuestion - 1];
+            // Update question with animation
+            const questionElement = document.querySelector('.quiz-question');
+            questionElement.style.opacity = '0';
             
-            // Update options
+            setTimeout(() => {
+                questionElement.textContent = questions[currentQuestion - 1];
+                questionElement.style.opacity = '1';
+            }, 150);
+
+            // Update options with animation
             const optionsContainer = document.querySelector('.quiz-options');
-            optionsContainer.innerHTML = '';
-            questionOptions[currentQuestion - 1].forEach(optionText => {
-                const option = document.createElement('div');
-                option.className = 'quiz-option';
-                option.textContent = optionText;
-                option.onclick = () => selectOption(option);
-                optionsContainer.appendChild(option);
-            });
+            optionsContainer.style.opacity = '0';
+            
+            setTimeout(() => {
+                optionsContainer.innerHTML = '';
+                questionOptions[currentQuestion - 1].forEach(optionData => {
+                    const option = document.createElement('div');
+                    option.className = 'quiz-option';
+                    option.innerHTML = `
+                        <i class="${optionData.icon}"></i>
+                        ${optionData.text}
+                    `;
+                    option.onclick = () => selectOption(option);
+                    optionsContainer.appendChild(option);
+                });
+                optionsContainer.style.opacity = '1';
+            }, 150);
 
             // Update progress
-            document.querySelector('.quiz-progress').textContent = `Pergunta ${currentQuestion} de ${totalQuestions}`;
+            document.querySelector('.quiz-progress').innerHTML = `
+                <i class="fas fa-clock"></i>
+                Pergunta ${currentQuestion} de ${totalQuestions} • Tempo estimado: ${6 - currentQuestion} minutos
+            `;
             
             // Update button text
+            const nextBtn = document.querySelector('.quiz-next');
             if (currentQuestion === totalQuestions) {
-                document.querySelector('.quiz-next').textContent = 'FINALIZAR AVALIAÇÃO';
+                nextBtn.innerHTML = '<i class="fas fa-check"></i> FINALIZAR AVALIAÇÃO';
+            } else {
+                nextBtn.innerHTML = '<i class="fas fa-arrow-right"></i> PRÓXIMA PERGUNTA';
             }
         }
 
@@ -2126,10 +2173,19 @@
             const quizContainer = document.querySelector('.quiz-container');
             quizContainer.innerHTML = `
                 <div style="text-align: center;">
-                    <h3 style="color: var(--primary-red); margin-bottom: 1rem;">🎉 Avaliação Concluída!</h3>
-                    <p style="margin-bottom: 2rem;">Seu perfil de transformação foi identificado com sucesso!</p>
-                    <p style="margin-bottom: 2rem; color: var(--text-gray);">Baseado em suas respostas, você tem um excelente potencial de transformação facial. Nosso método científico pode ajudá-lo a alcançar resultados impressionantes em apenas 90 dias.</p>
-                    <a href="#contact" class="cta-button" style="display: inline-block; text-decoration: none;">FALAR COM ESPECIALISTA</a>
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🎉</div>
+                    <h3 style="color: var(--primary-red); margin-bottom: 1.5rem; font-size: 2rem;">Avaliação Concluída!</h3>
+                    <p style="margin-bottom: 2rem; font-size: 1.2rem;">Seu perfil de transformação foi identificado com sucesso!</p>
+                    <div style="background: rgba(255, 0, 0, 0.05); padding: 2rem; border-radius: 15px; margin-bottom: 2rem; border: 1px solid rgba(255, 0, 0, 0.1);">
+                        <p style="color: var(--text-gray); font-size: 1.1rem; line-height: 1.6;">
+                            Baseado em suas respostas, você tem um <strong>excelente potencial de transformação facial</strong>. 
+                            Nosso método científico pode ajudá-lo a alcançar resultados impressionantes em apenas 90 dias.
+                        </p>
+                    </div>
+                    <a href="#contact" class="cta-button" style="display: inline-block; text-decoration: none; font-size: 1.3rem; padding: 1.5rem 3rem;">
+                        <i class="fas fa-user-md"></i>
+                        FALAR COM ESPECIALISTA
+                    </a>
                 </div>
             `;
         }
