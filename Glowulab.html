@@ -1160,20 +1160,43 @@
 
     <!-- Quiz Section -->
     <section id="quiz" class="quiz">
-        <h2>Descubra Seu Potencial de Transformação</h2>
-        <p class="quiz-subtitle">Responda nosso questionário científico e descubra exatamente qual é o seu perfil de transformação facial</p>
-        
-        <div class="quiz-container">
-            <div class="quiz-question">Como você avalia a simetria atual do seu rosto?</div>
-            <div class="quiz-options">
-                <div class="quiz-option" onclick="selectOption(this)">Muito assimétrico - noto diferenças grandes entre os lados</div>
-                <div class="quiz-option" onclick="selectOption(this)">Assimétrico - algumas diferenças visíveis</div>
-                <div class="quiz-option" onclick="selectOption(this)">Razoavelmente simétrico - pequenas imperfeições</div>
-                <div class="quiz-option" onclick="selectOption(this)">Bem simétrico - poucas imperfeições notáveis</div>
-                <div class="quiz-option" onclick="selectOption(this)">Perfeitamente simétrico - sem imperfeições visíveis</div>
+        <div class="quiz-content">
+            <h2>Descubra Seu Potencial de Transformação</h2>
+            <p class="quiz-subtitle">Responda nosso questionário científico e descubra exatamente qual é o seu perfil de transformação facial. Cada pergunta nos ajuda a personalizar sua jornada.</p>
+            
+            <div class="quiz-container">
+                <div class="quiz-question">Como você avalia a simetria atual do seu rosto?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <i class="fas fa-chart-line"></i>
+                        Muito assimétrico - noto diferenças grandes entre os lados
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <i class="fas fa-balance-scale"></i>
+                        Assimétrico - algumas diferenças visíveis
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <i class="fas fa-adjust"></i>
+                        Razoavelmente simétrico - pequenas imperfeições
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <i class="fas fa-check-circle"></i>
+                        Bem simétrico - poucas imperfeições notáveis
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <i class="fas fa-star"></i>
+                        Perfeitamente simétrico - sem imperfeições visíveis
+                    </div>
+                </div>
+                <div class="quiz-progress">
+                    <i class="fas fa-clock"></i>
+                    Pergunta 1 de 5 • Tempo estimado: 2 minutos
+                </div>
+                <button class="cta-button quiz-next" onclick="nextQuestion()">
+                    <i class="fas fa-arrow-right"></i>
+                    PRÓXIMA PERGUNTA
+                </button>
             </div>
-            <div class="quiz-progress">Pergunta 1 de 5</div>
-            <button class="cta-button quiz-next" onclick="nextQuestion()">PRÓXIMA PERGUNTA</button>
         </div>
     </section>
 
